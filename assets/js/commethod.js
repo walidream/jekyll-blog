@@ -3,51 +3,6 @@
  */
 
 
-//获取评论
-function getConfig(){
-    $.get('https://api.github.com/repos/walidream/waliblog/issues',function(data){
-        if(data.length>0){
-            window.GLVARIABLE.gh_comment = data;
-        }
-    });
-}
-//获取首页评论
-function getHomeComment(){
-    if(window.GLVARIABLE.gh_comment.length > 0){
-        var ci = '';
-        window.GLVARIABLE.gh_comment.forEach(function(val,ind){
-            if( ind <10 ){
-               var commentItem = '<li class="comment-item"><span class="comment-user">'+val.user.login+'：</span><a href="javascript:void(0)" class="comment-link">'+val.body+'</a></li>';
-               ci += commentItem;
-            }
-        });
-        $('#home-comment').empty().append(ci);
-    }else {
-        $.get('https://api.github.com/repos/walidream/waliblog/issues',function(data){
-            if(data.length>0){
-                window.GLVARIABLE.gh_comment = data;
-                var ci = '';
-                data.forEach(function(val,ind){
-                    if(ind < 10){
-                        var commentItem = '<li class="comment-item"><span class="comment-user">'+val.user.login+'：</span><a href="javascript:void(0)" class="comment-link">'+val.body+'</a></li>';
-                        ci += commentItem;
-                    }
-                });
-                $('#home-comment').empty().append(ci);
-            }
-        });
-    }
-}
-
-//获取评论数
-function getCommentNum(){
-    if(window.GLVARIABLE.gh_comment.length >0 ){
-
-    }else {
-
-    }
-}
-
 //post导航淡入淡出
 function navFade(){
     $(window).scroll( function(){

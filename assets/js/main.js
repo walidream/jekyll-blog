@@ -4,8 +4,6 @@
 
 $(function(){
 	
-	//首页评论
-    getHomeComment();
 	//返回顶部
 	navFade();
 	//返回顶部
